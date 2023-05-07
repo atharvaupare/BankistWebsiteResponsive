@@ -7,6 +7,7 @@ const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
 const hamburger = document.querySelector('[data-nav-hamburger]');
 const navLinksWrapper = document.querySelector('[data-nav-links]');
+const navlinks = document.querySelectorAll('.nav__links');
 const footer = document.querySelector('.footer');
 const mobileBreakpoint = 767;
 const tabletBreakpoint = 768;
@@ -30,6 +31,12 @@ closeCookie.addEventListener('click', function () {
 function mobileMenu() {
   hamburger.classList.toggle('active');
   navLinksWrapper.classList.toggle('active');
+  navlinks.forEach(link => {
+    link.addEventListener('click', function () {
+      navLinksWrapper.classList.remove('active');
+      hamburger.classList.remove('active');
+    });
+  });
 }
 hamburger.addEventListener('click', mobileMenu);
 
